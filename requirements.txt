@@ -1,0 +1,10 @@
+torchvision
+matplotlib
+scipy
+numpy
+intel-openmp
+pyinstrument==3.2.0
+pyqt5-sip==4.19.18
+pyqtwebengine==5.12.1
+pytorch-msssim==0.2.0
+pytorch-ssim==0.1
