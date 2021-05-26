@@ -96,7 +96,11 @@ def set_dataset_default_lm(opt, parser):
         parser.set_defaults(lambda_labelmix=5.0)
         parser.set_defaults(freq_fid=2500)
         parser.set_defaults(EMA_decay=0.999)
-
+    if opt.dataset_mode == "kitti":
+        parser.set_defaults(lr_g=0.0004)
+        parser.set_defaults(lambda_labelmix=5.0)
+        parser.set_defaults(freq_fid=2500)
+        parser.set_defaults(EMA_decay=0.999)
 
 def save_options(opt, parser):
     path_name = os.path.join(opt.checkpoints_dir,opt.name)

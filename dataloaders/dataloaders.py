@@ -12,6 +12,8 @@ def get_dataset_name(mode):
         return "bdd100kDataset"
     if mode == 'bdd100knew':
         return 'bdd100kDataset_new'
+    if mode == 'kitti':
+        return 'kittiDataset'
     else:
         ValueError("There is no such dataset regime as %s" % mode)
 

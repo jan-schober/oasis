@@ -1,6 +1,10 @@
 from PIL import Image
 import glob
 
+'''
+Small script to create image grids for visualisation.
+'''
+
 def image_grid(imgs, rows, cols):
     print(len(imgs))
     assert len(imgs) == rows *cols

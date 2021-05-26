@@ -4,6 +4,10 @@ import numpy as np
 from collections import namedtuple
 from shutil import copyfile
 
+'''
+This script converts carla semantic image to bdd semantic format.
+'''
+
 
 def main():
     root_path = '/home/schober/carla/output/bdd_1280_720/'

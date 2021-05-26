@@ -1,5 +1,10 @@
 import os
 
+'''
+Small script which prints differences of files in different folders. Needed it for cleaning the bdd dataset.
+'''
+
+
 dataroot = '/home/schober/bdd100k'
 
 mode = 'val'

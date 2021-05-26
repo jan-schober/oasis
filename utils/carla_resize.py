@@ -1,6 +1,10 @@
 import glob
 import cv2
 
+'''
+Small script for resizing images.
+'''
+
 #root_path = '/media/jan/TEST/_Masterarbeit/results/results_star_gan/vergleich/carla/'
 #output_folder = '/media/jan/TEST/_Masterarbeit/results/results_star_gan/vergleich/carla_resized/'
 root_path = '/home/schober/vkitti_conv/images/'

@@ -4,7 +4,11 @@ from shutil import copyfile
 import cv2
 import numpy as np
 
-
+'''
+This script converts carla semantic labels to cityscapes semantic label, instance id and label color.
+It also copy the rendered images.
+The file names are equal to the cityscape file names.
+'''
 def main():
     root_path = '/home/schober/carla/output/bdd_1280_720/'
     output_folder_rendered = '/home/schober/carla/output/for_city_converted/rendered/'

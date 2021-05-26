@@ -1,6 +1,10 @@
 from shutil import copyfile
 import glob
 
+'''
+Small script to copy images on the node.
+'''
+
 root_path = '/home/schober/vkitti_conv/source/'
 
 file_list = glob.glob(root_path + '*/*png')

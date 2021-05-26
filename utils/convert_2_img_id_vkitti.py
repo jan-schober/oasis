@@ -4,6 +4,9 @@ import numpy as np
 from collections import namedtuple
 from shutil import copyfile
 
+'''
+This skript convertes the vkitti semantic images to bdd semantic image format.
+'''
 
 def main():
     root_path = '/storage/VKitti/vkitti/'
