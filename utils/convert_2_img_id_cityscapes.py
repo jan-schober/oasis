@@ -10,20 +10,18 @@ It also copy the rendered images.
 The file names are equal to the cityscape file names.
 '''
 def main():
-    root_path = '/home/schober/carla/output/bdd_1280_720/'
-    output_folder_rendered = '/home/schober/carla/output/for_city_converted/rendered/'
-    output_folder = '/home/schober/carla/output/for_city_converted/labels/'
-    img_list = glob.glob(root_path + '*semsec.png')
-    img_list_rendered = glob.glob(root_path + '*cam.png')
+    root_path = '/home/schober/carla/output_carla_town_03_2/'
+    output_folder_rendered = '/home/schober/cityscape_dataset/leftImg8bit/val/carla_0302/'
+    output_folder = '/home/schober/cityscape_dataset/gtFine/val/carla_0302/'
+    img_list = glob.glob(root_path + 'sem_filled/*.png')
+    img_list_rendered = glob.glob(root_path + 'darknet/data/obj/*.jpg')
 
     for source_path in img_list_rendered:
         img_number = get_carla_number(source_path)
-        output_dst = output_folder_rendered + 'carla_' + str(img_number) + '_leftImg8bit.png'
-        print(output_dst)
+        output_dst = output_folder_rendered + 'carla0302_' + str(img_number) + '_leftImg8bit.jpg'
         copyfile(source_path, output_dst)
 
     for img in img_list:
-
         color_img = cv2.imread(img)
         color_img = cv2.cvtColor(color_img, cv2.COLOR_BGR2RGB)
         Label = namedtuple('Label', [
@@ -129,7 +127,6 @@ def main():
             instance = label.hasInstances
             if instance and mask.any() > 0:
                 i_id = label.instance_id
-                print(i_id)
                 color_instance = [i_id, i_id, i_id]
                 instance_mask = np.copy(instance_mask)
                 instance_mask[mask != 0] = color_instance
@@ -163,15 +160,16 @@ def main():
 
         carla_number = get_carla_number(img)
 
-        cv2.imwrite(output_folder + 'carla_' + str(carla_number) + '_gtFine_instanceIds.png', instance_mask)
-        cv2.imwrite(output_folder + 'carla_' + str(carla_number) + '_gtFine_labelIds.png', img_mask)
-        cv2.imwrite(output_folder + 'carla_' + str(carla_number) + '_gtFine_color.png', color_mask)
+        cv2.imwrite(output_folder + 'carla0302_' + str(carla_number) + '_gtFine_instanceIds.png', instance_mask)
+        cv2.imwrite(output_folder + 'carla0302_' + str(carla_number) + '_gtFine_labelIds.png', img_mask)
+        cv2.imwrite(output_folder + 'carla0302_' + str(carla_number) + '_gtFine_color.png', color_mask)
 
 
 def get_carla_number(path):
     file_name = path.split('/')[-1]
-    number = file_name.split('_')[0]
+    number = file_name.split('.')[0]
     return number
+
 
 
 if __name__ == "__main__":

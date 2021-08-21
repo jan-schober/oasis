@@ -46,7 +46,7 @@ class CityscapesDataset(torch.utils.data.Dataset):
                     labels.append(os.path.join(city_folder, item))
         assert len(images)  == len(labels), "different len of images and labels %s - %s" % (len(images), len(labels))
         for i in range(len(images)):
-            assert images[i].replace("_leftImg8bit.png", "") == labels[i].replace("_gtFine_labelIds.png", ""),\
+            assert images[i].replace("_leftImg8bit.jpg", "") == labels[i].replace("_gtFine_labelIds.png", ""),\
                 '%s and %s are not matching' % (images[i], labels[i])
         return images, labels, (path_img, path_lab)
 

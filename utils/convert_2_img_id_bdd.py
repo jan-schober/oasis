@@ -10,15 +10,19 @@ This script converts carla semantic image to bdd semantic format.
 
 
 def main():
-    root_path = '/home/schober/carla/output/bdd_1280_720/'
-    output_folder_rendered = '/home/schober/bdd100k/images/10k/val_carla/'
-    output_folder = '/home/schober/bdd100k/labels/sem_seg/masks/val_carla/'
-    img_list = glob.glob(root_path + '*semsec.png')
-    img_list_rendered = glob.glob(root_path + '*cam.png')
+    #root_path = '/home/schober/carla/output/bdd_1280_720/'
+    output_folder_rendered = '/home/schober/bdd100k_test/images/10k/val/'
+    output_folder = '/home/schober/bdd100k_test/labels/sem_seg/masks/val/'
+    #img_list = glob.glob(root_path + '*semsec.png')
+    #img_list_rendered = glob.glob(root_path + '*cam.png')
+
+    img_list_rendered = glob.glob('/home/schober/carla/output_carla_town_05/darknet/data/obj/*.jpg')
+    img_list = glob.glob('/home/schober/carla/output_carla_town_05/sem_filled/*.png')
 
     for source_path in img_list_rendered:
         img_number = get_carla_number(source_path)
-        output_dst = output_folder_rendered + 'carla_' + str(img_number) + '.jpg'
+        output_dst = output_folder_rendered + 'carla_05_' + str(img_number) + '.jpg'
+        #output_dst = output_folder_rendered + 'carla_01_' + str(img_number)
         print(output_dst)
         copyfile(source_path, output_dst)
 
@@ -84,11 +88,12 @@ def main():
         img_mask = img_mask.astype('uint8')
 
         carla_number = get_carla_number(img)
-        cv2.imwrite(output_folder + 'carla_' + str(carla_number) + '.png', img_mask)
+        #cv2.imwrite(output_folder + 'carla_01' + str(carla_number), img_mask)
+        cv2.imwrite(output_folder + 'carla_05_' + str(carla_number) + '.png', img_mask)
 
 def get_carla_number(path):
     file_name = path.split('/')[-1]
-    number = file_name.split('_')[0]
+    number = file_name.split('.')[0]
     return number
 
 if __name__ == "__main__":
