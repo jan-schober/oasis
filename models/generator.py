@@ -34,7 +34,9 @@ class OASIS_Generator(nn.Module):
             seg.cuda()
         if not self.opt.no_3dnoise:
             dev = seg.get_device() if self.opt.gpu_ids != "-1" else "cpu"
+
             '''
+            Fixed Vector z for more time consistent Images, if you want to use it uncomment next line
             z = torch.tensor([[0.1940, 2.1614, -0.1721, 0.8491, -1.9244, 0.6530, -0.6494, -0.8175,
                                     0.5280, -1.2753, -1.6621, -0.3033, -0.0926, 0.1992, -1.1204, 1.8577,
                                     -0.7145, 0.6881, 0.7968, -0.0334, 1.4917, -0.5165, -0.2541, 1.4746,
@@ -45,6 +47,10 @@ class OASIS_Generator(nn.Module):
                                     -0.3498, -0.6443, 0.4468, -0.5371, 1.2423, -0.8146, 0.2502, -0.4273]],
                                   dtype=torch.float32,
                                   device=dev)
+            '''
+
+            '''
+            Next line is random z-Vector, if you want to use an fixed comment out the next line
             '''
             z = torch.randn(seg.size(0), self.opt.z_dim, dtype=torch.float32, device=dev)
 
